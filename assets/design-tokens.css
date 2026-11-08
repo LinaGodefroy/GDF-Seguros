@@ -1,0 +1,96 @@
+/*
+ * GDF Seguros — Design Tokens (CSS variables)
+ * Generado a mano desde assets/design-tokens.json — ver ese archivo para la fuente de verdad
+ * y docs/brand-guidelines.md para el razonamiento detrás de cada decisión.
+ */
+
+:root {
+  /* Primitive — Gold */
+  --color-gold-d3: #895F06;
+  --color-gold-d2: #B07B07;
+  --color-gold-d1: #D79609; /* Harvest Gold */
+  --color-gold-base: #F5AE14; /* Sunflower Gold */
+  --color-gold-l1: #F7BB3B;
+  --color-gold-l2: #F8C963;
+  --color-gold-l3: #F9D68B;
+
+  /* Primitive — Emerald */
+  --color-emerald-d3: #046243;
+  --color-emerald-d2: #06885D;
+  --color-emerald-d1: #07B078; /* Jungle Green */
+  --color-emerald-base: #09D793; /* Emerald */
+  --color-emerald-l1: #14F5AA;
+  --color-emerald-l2: #4FF8BF;
+  --color-emerald-l3: #9EFADB;
+
+  /* Primitive — Accent / Neutrals */
+  --color-violet-base: #8B2FE0;
+  --color-onyx-base: #101012;
+  --color-platinum-base: #F4F4F5;
+
+  /* NO está en el brand kit original — temporal hasta validar con Alex */
+  --color-error-base: #EF4444;
+
+  /* Semantic */
+  --color-primary: var(--color-gold-base);
+  --color-primary-hover: var(--color-gold-d1);
+  --color-primary-active: var(--color-gold-d2);
+  --color-primary-light: var(--color-gold-l1);
+  --color-primary-lighter: var(--color-gold-l3);
+
+  --color-secondary: var(--color-emerald-base);
+  --color-secondary-hover: var(--color-emerald-d1);
+  --color-secondary-light: var(--color-emerald-l1);
+
+  --color-accent: var(--color-violet-base);
+
+  --color-background: var(--color-onyx-base);
+  --color-surface-on-dark: var(--color-onyx-base);
+  --color-surface-on-light: var(--color-platinum-base);
+  --color-text-on-dark: var(--color-platinum-base);
+  --color-text-on-light: var(--color-onyx-base);
+
+  --color-success: var(--color-emerald-base);
+  --color-error: var(--color-error-base);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  --text-h1-size: 64px;
+  --text-h1-weight: 700;
+  --text-h1-tracking: -0.01em;
+
+  --text-h2-size: 48px;
+  --text-h2-weight: 700;
+  --text-h2-tracking: -0.005em;
+
+  --text-h3-size: 36px;
+  --text-h3-weight: 600;
+  --text-h3-tracking: 0em;
+
+  --text-body-size: 16px;
+  --text-body-weight: 400;
+
+  --text-button-size: 16px;
+  --text-button-weight: 600;
+  --text-button-tracking: 0.01em;
+
+  --text-caption-size: 12px;
+  --text-caption-weight: 500;
+  --text-caption-tracking: 0.02em;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Buttons */
+  --button-primary-bg: var(--color-gold-base);
+  --button-primary-text: var(--color-onyx-base);
+  --button-primary-bg-hover: var(--color-gold-d1);
+  --button-radius: 8px;
+}

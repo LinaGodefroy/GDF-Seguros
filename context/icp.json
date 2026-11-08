@@ -1,0 +1,80 @@
+{
+  "ideal_client_profile": {
+    "version": "1.0",
+    "last_updated": "2026-11-08",
+    "scope": "Particulares en auto, GMM, vida y casa. Dueños de negocio/empresas quedan fuera de este ICP por ahora.",
+    "core_profile": {
+      "age_range": "30-40",
+      "household": "Con pareja y/o hijos, o a punto de tenerlos. Decide como jefe/jefa de familia, no como individuo suelto.",
+      "employment": "Empleo formal",
+      "location": "Monterrey y León (mercado local, ninguno de los 4 competidores revisados lo cubre bien)",
+      "decision_frame": "La compra se enmarca como proteger a la familia, no como comprar un producto financiero para sí mismo."
+    },
+    "by_ramo": {
+      "auto": {
+        "trigger_moment": "Auto nuevo o financiado",
+        "fear": "Chocar sin cobertura amplia y tener que pagar de su bolsa"
+      },
+      "gastos_medicos_mayores": {
+        "trigger_moment": "Cambio de empleo que quita el GMM corporativo; un familiar que se enfermó sin cobertura",
+        "fear": "Una hospitalización que acaba con los ahorros"
+      },
+      "vida": {
+        "trigger_moment": "Bebé en camino",
+        "fear": "Que la familia se quede sin nada si algo le pasa al jefe/jefa de familia"
+      },
+      "casa": {
+        "trigger_moment": "Hipoteca nueva — el banco exige el seguro, no se contrata por iniciativa propia",
+        "fear": "Menos miedo propio, más obligación impuesta por el banco; oportunidad para educar sobre por qué conviene elegir bien aunque sea requisito"
+      }
+    },
+    "fear_layers": {
+      "economic": [
+        "Me enfermo y una hospitalización me acaba los ahorros",
+        "Choco sin cobertura amplia y pago yo",
+        "Si me pasa algo mi familia se queda sin nada"
+      ],
+      "trust_based": [
+        "Me vendieron un seguro y cuando lo necesité me salieron con letra chiquita",
+        "Mi agente desapareció después de venderme"
+      ],
+      "note": "La capa de desconfianza (mal asesorado antes) es la que GDF puede explotar mejor como diferenciador — el miedo no es solo no tener seguro, es tener uno que no responda cuando se necesita."
+    },
+    "objections_ranked_by_likelihood": [
+      {"objection": "Desconfianza en los agentes", "rank": 1},
+      {"objection": "No entender las coberturas", "rank": 2},
+      {"objection": "Precio", "rank": 3},
+      {"objection": "Inercia (\"lo veo después\")", "rank": 4}
+    ],
+    "objections_caveat": "El precio es lo primero que la gente dice, pero probablemente tapa desconfianza y falta de entendimiento. PENDIENTE confirmar este orden con Alex — es el punto del ICP con más incertidumbre.",
+    "why_agent_not_insurer_direct": {
+      "problem_with_direct": "La aseguradora directa solo vende su propio producto y no hay nadie que pelee el caso del cliente.",
+      "what_gdf_must_offer_to_justify_the_intermediary": [
+        "Comparar varias aseguradoras con el mismo criterio",
+        "Explicar cómo cobra GDF (si es comisión de la aseguradora, decirlo sin rodeos)",
+        "Tiempo de respuesta publicado",
+        "Acompañamiento nombrado en un siniestro, con Alex como persona que da la cara"
+      ],
+      "note_on_free_review": "La revisión de póliza gratis es buen gancho pero no es diferenciador — EB Consulting ya ofrece 'asesoría sin costo'."
+    },
+    "language_patterns": {
+      "confirmed_client_phrases": [],
+      "pending_action": "Alex debe compartir 5 mensajes reales de primer contacto por WhatsApp (sin nombres) para extraer lenguaje real de clientes. También se pueden analizar capturas de comentarios en videos de Fernanda/Cynthia si se comparten.",
+      "competitor_phrases_observed": [
+        "claridad sin letras chiquitas (Moni / monicateasesora.com)",
+        "sin bots (Moni / monicateasesora.com)"
+      ],
+      "comment_keywords_observed": ["MUJER", "ASESORÍA", "bebé", "OFICINA"]
+    },
+    "channels": {
+      "competitor_funnel_pattern": "Video en TikTok → Linktree → Calendly o WhatsApp",
+      "gdf_current_channel": "Desconocido — pendiente confirmar con Alex si hoy vende principalmente por referidos, y cuánto tiempo lleva activa su cuenta social (si lleva ~2 meses, pesa más el boca a boca que el contenido por ahora)."
+    },
+    "open_questions_for_alex": [
+      "¿Confirmar el orden de objeciones: desconfianza/no-entender vs. precio?",
+      "¿Alex vende hoy principalmente por referidos?",
+      "¿Cuánto tiempo lleva activa la cuenta social de Alex (TikTok/Instagram)?",
+      "5 mensajes anónimos de primer contacto por WhatsApp para extraer lenguaje real"
+    ]
+  }
+}

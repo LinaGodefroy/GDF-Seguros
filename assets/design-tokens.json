@@ -1,0 +1,92 @@
+{
+  "brand": "GDF Seguros",
+  "_notes": "Construido a mano a partir del brand kit original de Alex (assets/brand/GDF Seguros Color Chart.png y GDF Seguros Typography.png), no con el generador automático de escalas del skill `brand` — ese generador aproxima tintes/sombras por brillo y aquí ya teníamos los valores exactos del kit. Los colores d1-l3 son los nombres que usa el kit original, no una escala numérica inventada.",
+  "primitive": {
+    "color": {
+      "gold": {
+        "d3": { "$value": "#895F06", "$type": "color" },
+        "d2": { "$value": "#B07B07", "$type": "color" },
+        "d1": { "$value": "#D79609", "$type": "color", "$description": "Harvest Gold" },
+        "base": { "$value": "#F5AE14", "$type": "color", "$description": "Sunflower Gold" },
+        "l1": { "$value": "#F7BB3B", "$type": "color" },
+        "l2": { "$value": "#F8C963", "$type": "color" },
+        "l3": { "$value": "#F9D68B", "$type": "color" }
+      },
+      "emerald": {
+        "d3": { "$value": "#046243", "$type": "color" },
+        "d2": { "$value": "#06885D", "$type": "color" },
+        "d1": { "$value": "#07B078", "$type": "color", "$description": "Jungle Green" },
+        "base": { "$value": "#09D793", "$type": "color", "$description": "Emerald" },
+        "l1": { "$value": "#14F5AA", "$type": "color" },
+        "l2": { "$value": "#4FF8BF", "$type": "color" },
+        "l3": { "$value": "#9EFADB", "$type": "color" }
+      },
+      "violet": {
+        "base": { "$value": "#8B2FE0", "$type": "color", "$description": "Blue Violet — único acento, no tiene escala en el kit original" }
+      },
+      "onyx": {
+        "base": { "$value": "#101012", "$type": "color" }
+      },
+      "platinum": {
+        "base": { "$value": "#F4F4F5", "$type": "color" }
+      },
+      "error": {
+        "base": { "$value": "#EF4444", "$type": "color", "$description": "NO está en el brand kit original — rojo estándar temporal para estados de error de formulario. Validar con Alex antes de usarlo en producción." }
+      }
+    },
+    "typography": {
+      "fontFamily": { "$value": "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif", "$type": "fontFamily" },
+      "h1": { "size": "64px", "weight": 700, "letterSpacing": "-1%" },
+      "h2": { "size": "48px", "weight": 700, "letterSpacing": "-0.5%" },
+      "h3": { "size": "36px", "weight": 600, "letterSpacing": "0%" },
+      "body": { "size": "16px", "weight": 400, "letterSpacing": "0%" },
+      "button": { "size": "16px", "weight": 600, "letterSpacing": "1%" },
+      "caption": { "size": "12px", "weight": 500, "letterSpacing": "2%" },
+      "_gap": "No hay H4, Body Large, ni escala mobile en el kit original — definir con design-taste-frontend/ui-ux-pro-max al construir la página."
+    },
+    "spacing": {
+      "xs": { "$value": "4px" },
+      "sm": { "$value": "8px" },
+      "md": { "$value": "16px" },
+      "lg": { "$value": "24px" },
+      "xl": { "$value": "32px" },
+      "2xl": { "$value": "48px" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "primary": { "$value": "{primitive.color.gold.base}", "$type": "color" },
+      "primary-hover": { "$value": "{primitive.color.gold.d1}", "$type": "color" },
+      "primary-active": { "$value": "{primitive.color.gold.d2}", "$type": "color" },
+      "primary-light": { "$value": "{primitive.color.gold.l1}", "$type": "color" },
+      "primary-lighter": { "$value": "{primitive.color.gold.l3}", "$type": "color" },
+      "secondary": { "$value": "{primitive.color.emerald.base}", "$type": "color" },
+      "secondary-hover": { "$value": "{primitive.color.emerald.d1}", "$type": "color" },
+      "secondary-light": { "$value": "{primitive.color.emerald.l1}", "$type": "color" },
+      "accent": { "$value": "{primitive.color.violet.base}", "$type": "color" },
+      "background": { "$value": "{primitive.color.onyx.base}", "$type": "color" },
+      "surface-on-dark": { "$value": "{primitive.color.onyx.base}", "$type": "color" },
+      "surface-on-light": { "$value": "{primitive.color.platinum.base}", "$type": "color" },
+      "text-on-dark": { "$value": "{primitive.color.platinum.base}", "$type": "color" },
+      "text-on-light": { "$value": "{primitive.color.onyx.base}", "$type": "color" },
+      "success": { "$value": "{primitive.color.emerald.base}", "$type": "color" },
+      "error": { "$value": "{primitive.color.error.base}", "$type": "color" }
+    }
+  },
+  "component": {
+    "button": {
+      "primary": {
+        "bg": { "$value": "{primitive.color.gold.base}", "$type": "color" },
+        "text": { "$value": "{primitive.color.onyx.base}", "$type": "color" },
+        "bg-hover": { "$value": "{primitive.color.gold.d1}", "$type": "color" },
+        "radius": { "$value": "8px" }
+      },
+      "secondary": {
+        "bg": { "$value": "transparent", "$type": "color" },
+        "text": { "$value": "{primitive.color.platinum.base}", "$type": "color" },
+        "border": { "$value": "{primitive.color.gold.base}", "$type": "color" },
+        "radius": { "$value": "8px" }
+      }
+    }
+  }
+}

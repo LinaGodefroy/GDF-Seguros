@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --color-gold-d3: #895f06;
+  --color-gold-d2: #b07b07;
+  --color-gold-d1: #d79609;
+  --color-gold: #f5ae14;
+  --color-gold-l1: #f7bb3b;
+  --color-gold-l2: #f8c963;
+  --color-gold-l3: #f9d68b;
+
+  --color-emerald-d3: #046243;
+  --color-emerald-d2: #06885d;
+  --color-emerald-d1: #07b078;
+  --color-emerald: #09d793;
+  --color-emerald-l1: #14f5aa;
+  --color-emerald-l2: #4ff8bf;
+  --color-emerald-l3: #9efadb;
+
+  --color-violet: #8b2fe0;
+  --color-onyx: #101012;
+  --color-onyx-raised: #19191c;
+  --color-platinum: #f4f4f5;
+  --color-platinum-dim: #a7a7ad;
+}
+
+@theme inline {
+  --color-gold-d3: var(--color-gold-d3);
+  --color-gold-d2: var(--color-gold-d2);
+  --color-gold-d1: var(--color-gold-d1);
+  --color-gold: var(--color-gold);
+  --color-gold-l1: var(--color-gold-l1);
+  --color-gold-l2: var(--color-gold-l2);
+  --color-gold-l3: var(--color-gold-l3);
+
+  --color-emerald-d3: var(--color-emerald-d3);
+  --color-emerald-d2: var(--color-emerald-d2);
+  --color-emerald-d1: var(--color-emerald-d1);
+  --color-emerald: var(--color-emerald);
+  --color-emerald-l1: var(--color-emerald-l1);
+  --color-emerald-l2: var(--color-emerald-l2);
+  --color-emerald-l3: var(--color-emerald-l3);
+
+  --color-violet: var(--color-violet);
+  --color-onyx: var(--color-onyx);
+  --color-onyx-raised: var(--color-onyx-raised);
+  --color-platinum: var(--color-platinum);
+  --color-platinum-dim: var(--color-platinum-dim);
+
+  --font-sans: var(--font-plus-jakarta);
+}
+
+/*
+  GDF Seguros se publica en un solo tema (Onyx dominante, como define
+  docs/brand-guidelines.md: 60% Onyx / 25% dorado / 10% esmeralda / 5% violeta).
+  No hay toggle claro/oscuro: es una decisión de marca, no una omisión.
+*/
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-onyx);
+  color: var(--color-platinum);
+}

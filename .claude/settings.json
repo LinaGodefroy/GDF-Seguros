@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "~/Claude/skills-library"
+    ],
+    "allow": [
+      "Read(~/Claude/skills-library/**)"
+    ],
+    "deny": [
+      "Edit(~/Claude/skills-library/**)",
+      "Write(~/Claude/skills-library/**)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  }
+}
