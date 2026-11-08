@@ -3,7 +3,10 @@ import {
   MagnifyingGlass,
   CurrencyCircleDollar,
   Handshake,
-  ArrowRight,
+  ChatCircleText,
+  Scales,
+  ShieldCheck,
+  CheckCircle,
 } from "@phosphor-icons/react/dist/ssr";
 import { RAMOS, WHATSAPP_URL } from "@/lib/site";
 import { RAMO_ICONS } from "@/lib/ramo-icons";
@@ -11,29 +14,69 @@ import { Reveal } from "@/components/Reveal";
 import { CotizadorForm } from "@/components/CotizadorForm";
 import { GLSLHills } from "@/components/ui/glsl-hills";
 import { HeroParallax } from "@/components/HeroParallax";
+import { LayoutGrid, type LayoutGridCard } from "@/components/ui/layout-grid";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { HowItWorksSteps } from "@/components/ui/how-it-works";
+import { ContactCard } from "@/components/ui/contact-card";
 
-const ASEGURADORAS = ["GNP", "AXA", "Quálitas", "Chubb"];
+const ASEGURADORAS = [
+  { nombre: "GNP", logo: "/aseguradoras/gnp.png" },
+  { nombre: "AXA", logo: "/aseguradoras/axa.png" },
+  { nombre: "Quálitas", logo: "/aseguradoras/qualitas.png" },
+  { nombre: "Chubb", logo: "/aseguradoras/chubb.png" },
+];
+
+const RAMO_THUMBNAILS: Record<string, string> = {
+  auto: "/ramos/auto/stephan-louis-KynjrTZ3JO4-unsplash.jpg",
+  "gastos-medicos-mayores":
+    "/ramos/gastos-medicos-mayores/vitaly-gariev-2kopEHjST-g-unsplash.jpg",
+  vida: "/ramos/vida/kelly-sikkema-WvVyudMd1Es-unsplash.jpg",
+  casa: "/ramos/casa/todd-kent-178j8tJrNlc-unsplash.jpg",
+  mascotas: "/ramos/mascotas/andrew-s-ouo1hbizWwo-unsplash.jpg",
+};
+
+const RAMO_CLASSNAMES: Record<string, string> = {
+  auto: "sm:col-span-2 lg:col-span-2",
+  "gastos-medicos-mayores": "lg:col-span-1",
+  vida: "lg:col-span-1",
+  casa: "lg:col-span-1",
+  mascotas: "lg:col-span-1",
+};
+
+const RAMO_CARDS: LayoutGridCard[] = RAMOS.map((ramo) => {
+  const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
+  return {
+    id: ramo.slug,
+    title: ramo.nombre,
+    description: ramo.resumen,
+    href: `/seguros/${ramo.slug}`,
+    cta: "Ver cobertura",
+    thumbnail: RAMO_THUMBNAILS[ramo.slug],
+    className: RAMO_CLASSNAMES[ramo.slug],
+    icon: <Icon size={28} weight="bold" />,
+  };
+});
 
 const PASOS = [
   {
-    numero: "01",
-    titulo: "Nos cuentas tus preocupaciones",
-    detalle: "Te escuchamos sin compromiso.",
+    icon: ChatCircleText,
+    title: "Nos cuentas tus preocupaciones",
+    body: "Te escuchamos sin compromiso.",
   },
   {
-    numero: "02",
-    titulo: "Comparamos entre varias aseguradoras",
-    detalle: "Con el mismo criterio, no solo te ofrecemos una.",
+    icon: Scales,
+    title: "Comparamos entre varias aseguradoras",
+    body: "Con el mismo criterio, no solo te ofrecemos una.",
   },
   {
-    numero: "03",
-    titulo: "Te decimos qué opción es la adecuada para ti",
-    detalle: "Y te explicamos por qué.",
+    icon: ShieldCheck,
+    title: "Te decimos qué opción es la adecuada para ti",
+    body: "Y te explicamos por qué.",
   },
   {
-    numero: "04",
-    titulo: "Tú decides",
-    detalle: "Sin presión y con la tranquilidad de estar protegido.",
+    icon: CheckCircle,
+    title: "Tú decides",
+    body: "Sin presión y con la tranquilidad de estar protegido.",
   },
 ];
 
@@ -62,7 +105,7 @@ export default function Home() {
         {/* Hero: ocupa toda la pantalla, se fija (pin) mientras la siguiente sección sube y lo cubre */}
         <section
           data-parallax-pin
-          className="relative flex min-h-[100dvh] items-center overflow-hidden"
+          className="relative flex min-h-[100dvh] items-center overflow-hidden bg-onyx"
         >
           <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
           <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
@@ -92,42 +135,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Los 4 ramos: sube y cubre al hero cuando se suelta el pin */}
+        {/* Los ramos: sube y cubre al hero cuando se suelta el pin */}
         <section className="relative z-10 rounded-t-[2.5rem] bg-onyx px-4 pb-20 pt-16 sm:rounded-t-[3rem] sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Cómo podemos protegerte</h2>
             </Reveal>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {RAMOS.map((ramo, i) => {
-                const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
-                return (
-                  <Reveal key={ramo.slug} delay={i * 0.05}>
-                    <Link
-                      href={`/seguros/${ramo.slug}`}
-                      className="group flex h-full flex-col justify-between rounded-2xl border border-platinum/10 bg-onyx-raised p-6 transition-colors hover:border-gold/40"
-                    >
-                      <div>
-                        <Icon size={28} weight="bold" className="text-gold-l1" />
-                        <h3 className="mt-4 text-lg font-semibold text-platinum">
-                          {ramo.nombre}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
-                          {ramo.resumen}
-                        </p>
-                      </div>
-                      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gold-l1">
-                        Ver cobertura
-                        <ArrowRight
-                          size={14}
-                          weight="bold"
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </span>
-                    </Link>
-                  </Reveal>
-                );
-              })}
+            <div className="mt-8">
+              <LayoutGrid cards={RAMO_CARDS} />
             </div>
           </div>
         </section>
@@ -135,89 +150,80 @@ export default function Home() {
 
       {/* Aseguradoras que comparamos */}
       <section className="border-y border-platinum/10 bg-onyx-raised">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl py-12">
           <Reveal>
-            <p className="text-center text-xs font-medium uppercase tracking-wide text-platinum-dim">
-              Comparamos entre estas aseguradoras
+            <p className="px-4 text-center text-xs font-medium uppercase tracking-wide text-platinum-dim sm:px-6 lg:px-8">
+              Nuestros Socios Comerciales
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-              {ASEGURADORAS.map((nombre) => (
-                <span
-                  key={nombre}
-                  className="font-display text-xl font-bold tracking-tight text-platinum/70 sm:text-2xl"
-                >
-                  {nombre}
-                </span>
-              ))}
+            <div className="relative mt-8">
+              <InfiniteSlider gap={96} duration={28} durationOnHover={70}>
+                {ASEGURADORAS.map((aseguradora) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={aseguradora.nombre}
+                    src={aseguradora.logo}
+                    alt={aseguradora.nombre}
+                    className="h-7 w-auto shrink-0 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 sm:h-8"
+                  />
+                ))}
+              </InfiniteSlider>
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-onyx-raised to-transparent sm:w-32" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-onyx-raised to-transparent sm:w-32" />
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* Cómo funciona */}
-      <section className="border-y border-platinum/10 bg-onyx-raised">
+      <section className="border-y border-platinum/10">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
             <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Cómo funciona</h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-4 md:gap-6">
-            {PASOS.map((paso, i) => (
-              <Reveal key={paso.numero} delay={i * 0.05}>
-                <span className="text-sm font-semibold text-gold-l2">{paso.numero}</span>
-                <h3 className="mt-2 text-base font-semibold leading-snug text-platinum">
-                  {paso.titulo}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
-                  {paso.detalle}
-                </p>
+          <div className="max-w-2xl">
+            <HowItWorksSteps steps={PASOS} />
+          </div>
+        </div>
+      </section>
+
+      {/* Por qué un agente y no la aseguradora directa */}
+      <section className="border-y border-platinum/10 bg-onyx-raised">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <Reveal className="max-w-xl">
+            <h2 className="text-2xl font-bold text-platinum sm:text-3xl">
+              Por qué un agente y no la aseguradora directa
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-platinum-dim">
+              Directo con la aseguradora solo te ofrecen su propio producto. Si
+              algo sale mal, no hay nadie de tu lado. Esto es lo que hacemos
+              distinto.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+            {DIFERENCIADORES.map((item, i) => (
+              <Reveal key={item.titulo} delay={i * 0.05} className="flex gap-4">
+                <item.icon size={24} weight="bold" className="mt-0.5 shrink-0 text-gold-d1" />
+                <div>
+                  <h3 className="text-base font-semibold text-platinum">{item.titulo}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-platinum-dim">
+                    {item.detalle}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Por qué un agente y no la aseguradora directa */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <Reveal className="max-w-xl">
-          <h2 className="text-2xl font-bold text-platinum sm:text-3xl">
-            Por qué un agente y no la aseguradora directa
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-platinum-dim">
-            Directo con la aseguradora solo te ofrecen su propio producto. Si
-            algo sale mal, no hay nadie de tu lado. Esto es lo que hacemos
-            distinto.
-          </p>
-        </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
-          {DIFERENCIADORES.map((item, i) => (
-            <Reveal key={item.titulo} delay={i * 0.05} className="flex gap-4">
-              <item.icon size={24} weight="bold" className="mt-0.5 shrink-0 text-gold-d1" />
-              <div>
-                <h3 className="text-base font-semibold text-platinum">{item.titulo}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-platinum-dim">
-                  {item.detalle}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* Cotizador: cierre de la página, destino de todos los CTA "Cotiza gratis" */}
       <section id="cotizar" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-24 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-gold/30 bg-onyx-raised p-6 sm:p-10">
-          <div className="max-w-xl">
-            <h2 className="text-2xl font-bold text-platinum sm:text-3xl">
-              Cotiza gratis
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-platinum-dim sm:text-base">
-              Cuéntanos qué quieres proteger y elige un horario para hablar con
-              nosotros. Si podemos bajarte el costo, te lo decimos ahí mismo.
-            </p>
-          </div>
-          <div className="mt-8">
+        <Reveal>
+          <ContactCard
+            title="Cotiza gratis"
+            description="Cuéntanos qué quieres proteger y elige un horario para hablar con nosotros. Si podemos bajarte el costo, te lo decimos ahí mismo."
+          >
             <CotizadorForm />
-          </div>
+          </ContactCard>
         </Reveal>
       </section>
     </>
