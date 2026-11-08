@@ -51,6 +51,11 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-platinum">Contacto</h3>
             <ul className="mt-4 flex flex-col gap-3">
               <li>
+                <Link href="/nosotros" className="text-sm text-platinum-dim transition-colors hover:text-gold-l1">
+                  Nosotros
+                </Link>
+              </li>
+              <li>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"

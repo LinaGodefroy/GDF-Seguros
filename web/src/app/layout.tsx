@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -9,6 +9,15 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+// Tipografía de acento, solo para titulares de hero/impacto. El resto del
+// sitio se queda en Plus Jakarta Sans (la de la marca). Bricolage Grotesque
+// tiene el mismo espíritu geométrico, pero con más carácter a tamaño grande.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +31,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es-MX" className={`${plusJakarta.variable} h-full antialiased`}>
+    <html
+      lang="es-MX"
+      className={`${plusJakarta.variable} ${bricolage.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-onyx text-platinum">
         <Nav />
         <main className="flex-1">{children}</main>

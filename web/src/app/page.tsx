@@ -1,24 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   MagnifyingGlass,
   CurrencyCircleDollar,
-  Clock,
   Handshake,
   ArrowRight,
 } from "@phosphor-icons/react/dist/ssr";
 import { RAMOS, WHATSAPP_URL } from "@/lib/site";
 import { RAMO_ICONS } from "@/lib/ramo-icons";
 import { Reveal } from "@/components/Reveal";
-import { Faq } from "@/components/Faq";
 import { CotizadorForm } from "@/components/CotizadorForm";
 import { GLSLHills } from "@/components/ui/glsl-hills";
+import { HeroParallax } from "@/components/HeroParallax";
+
+const ASEGURADORAS = ["GNP", "AXA", "Quálitas", "Chubb"];
 
 const PASOS = [
   {
     numero: "01",
-    titulo: "Cuéntanos qué quieres proteger",
-    detalle: "2 minutos, sin compromiso.",
+    titulo: "Nos cuentas tus preocupaciones",
+    detalle: "Te escuchamos sin compromiso.",
   },
   {
     numero: "02",
@@ -27,13 +27,13 @@ const PASOS = [
   },
   {
     numero: "03",
-    titulo: "Te decimos si podemos bajarte el costo",
-    detalle: "Gratis, sin letra pequeña escondida en el proceso.",
+    titulo: "Te decimos qué opción es la adecuada para ti",
+    detalle: "Y te explicamos por qué.",
   },
   {
     numero: "04",
     titulo: "Tú decides",
-    detalle: "Sin presión. Lo que no cubre, te lo decimos antes de firmar.",
+    detalle: "Sin presión y con la tranquilidad de estar protegido.",
   },
 ];
 
@@ -49,121 +49,108 @@ const DIFERENCIADORES = [
     detalle: "Nos paga la aseguradora vía comisión, a ti no te cuesta más.",
   },
   {
-    icon: Clock,
-    titulo: "Publicamos cuánto tardamos",
-    detalle: "En responder cuando reportas un siniestro.",
-  },
-  {
     icon: Handshake,
-    titulo: "Acompañamos con nombre y apellido",
-    detalle: "Alex da la cara, no un número de ticket.",
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    pregunta: "¿De verdad no me cuesta nada pasar por un agente?",
-    respuesta:
-      "No. Nos paga la aseguradora con una comisión, no tú. Si alguna vez fuera distinto, te lo decimos antes de empezar, no después.",
-  },
-  {
-    pregunta: "¿Por qué no voy directo con la aseguradora?",
-    respuesta:
-      "Puedes. Pero ahí solo te venden su propio producto, y si algo sale mal, no hay nadie peleando tu caso. Nosotros comparamos varias opciones y te acompañamos cuando de verdad importa.",
-  },
-  {
-    pregunta: "Ya me fue mal con un agente antes. ¿Por qué sería distinto con ustedes?",
-    respuesta:
-      "Porque publicamos cómo cobramos y cuánto tardamos en responder, y porque cuando hay un siniestro, Alex da la cara, no te deja con un número de ticket.",
-  },
-  {
-    pregunta: "¿Cuánto tarda la cotización?",
-    respuesta: "2 minutos para mandarnos tus datos. Te respondemos por WhatsApp apenas la recibimos.",
+    titulo: "Nosotros damos la cara",
+    detalle: "Te acompañamos en un siniestro, no te dejamos con un número de ticket.",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Hero: split asimétrico, texto a la izquierda, isotipo real como asset visual a la derecha */}
-      <section className="relative overflow-hidden">
-        <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-16 sm:px-6 md:grid-cols-2 md:pt-20 lg:px-8">
-          <div className="relative z-10 max-w-xl">
-            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-platinum sm:text-5xl lg:text-6xl">
+      <HeroParallax>
+        {/* Hero: ocupa toda la pantalla, se fija (pin) mientras la siguiente sección sube y lo cubre */}
+        <section
+          data-parallax-pin
+          className="relative flex min-h-[100dvh] items-center overflow-hidden"
+        >
+          <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
+          <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-platinum sm:text-5xl lg:text-6xl">
               Tu seguro, a tu medida.
             </h1>
             <p className="mt-6 max-w-[42ch] text-base text-platinum-dim sm:text-lg">
-              Comparamos entre varias aseguradoras, te decimos cómo cobramos, y
-              cuando algo pasa estamos aquí para ti.
+              Buscamos entre varias aseguradoras la mejor opción para que
+              cuando algo pase tú estés tranquilo.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href="#cotizar"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
               >
                 Cotiza gratis
-                <ArrowRight size={16} weight="bold" />
               </Link>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
               >
                 Escríbenos por WhatsApp
               </a>
             </div>
           </div>
+        </section>
 
-          <div className="relative flex items-center justify-center md:justify-end">
-            <Image
-              src="/brand/isotipo-negativo.png"
-              alt="Isotipo GDF Seguros"
-              width={420}
-              height={380}
-              priority
-              className="h-auto w-56 sm:w-72 md:w-80 lg:w-96"
-            />
+        {/* Los 4 ramos: sube y cubre al hero cuando se suelta el pin */}
+        <section className="relative z-10 rounded-t-[2.5rem] bg-onyx px-4 pb-20 pt-16 sm:rounded-t-[3rem] sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <Reveal>
+              <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Cómo podemos protegerte</h2>
+            </Reveal>
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {RAMOS.map((ramo, i) => {
+                const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
+                return (
+                  <Reveal key={ramo.slug} delay={i * 0.05}>
+                    <Link
+                      href={`/seguros/${ramo.slug}`}
+                      className="group flex h-full flex-col justify-between rounded-2xl border border-platinum/10 bg-onyx-raised p-6 transition-colors hover:border-gold/40"
+                    >
+                      <div>
+                        <Icon size={28} weight="bold" className="text-gold-l1" />
+                        <h3 className="mt-4 text-lg font-semibold text-platinum">
+                          {ramo.nombre}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
+                          {ramo.resumen}
+                        </p>
+                      </div>
+                      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gold-l1">
+                        Ver cobertura
+                        <ArrowRight
+                          size={14}
+                          weight="bold"
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </span>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </HeroParallax>
 
-      {/* Los 4 ramos */}
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <Reveal>
-          <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Qué cubrimos</h2>
-        </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {RAMOS.map((ramo, i) => {
-            const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
-            return (
-              <Reveal key={ramo.slug} delay={i * 0.05}>
-                <Link
-                  href={`/seguros/${ramo.slug}`}
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-platinum/10 bg-onyx-raised p-6 transition-colors hover:border-gold/40"
+      {/* Aseguradoras que comparamos */}
+      <section className="border-y border-platinum/10 bg-onyx-raised">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="text-center text-xs font-medium uppercase tracking-wide text-platinum-dim">
+              Comparamos entre estas aseguradoras
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+              {ASEGURADORAS.map((nombre) => (
+                <span
+                  key={nombre}
+                  className="font-display text-xl font-bold tracking-tight text-platinum/70 sm:text-2xl"
                 >
-                  <div>
-                    <Icon size={28} weight="bold" className="text-gold-l1" />
-                    <h3 className="mt-4 text-lg font-semibold text-platinum">
-                      {ramo.nombre}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
-                      {ramo.resumen}
-                    </p>
-                  </div>
-                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gold-l1">
-                    Ver cobertura
-                    <ArrowRight
-                      size={14}
-                      weight="bold"
-                      className="transition-transform group-hover:translate-x-1"
-                    />
-                  </span>
-                </Link>
-              </Reveal>
-            );
-          })}
+                  {nombre}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -213,18 +200,6 @@ export default function Home() {
               </div>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-t border-platinum/10 bg-onyx-raised">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-          <Reveal>
-            <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Preguntas frecuentes</h2>
-          </Reveal>
-          <div className="mt-8">
-            <Faq items={FAQ_ITEMS} />
-          </div>
         </div>
       </section>
 
