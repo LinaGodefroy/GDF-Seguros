@@ -1,8 +1,16 @@
 // Constantes del sitio. Los valores marcados PENDIENTE vienen de docs/pendientes.md
 // en la raíz del proyecto (fuera de /web) y deben confirmarse con Alex antes de publicar.
 
-export const WHATSAPP_NUMBER_PENDING = "5210000000000"; // PENDIENTE: número real de WhatsApp
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER_PENDING}`;
+// Formato wa.me para México: 52 + 10 dígitos, sin el "1" extra que WhatsApp
+// ya no requiere desde 2021.
+//
+// Este es el número de Monterrey. Es el único que tenemos, así que lo usamos
+// como el WhatsApp general del sitio (burbuja flotante, botones, cotizador,
+// footer). PENDIENTE confirmar con Alex: ¿León tiene su propio número, o
+// este mismo atiende a las dos plazas por ahora? Si hay uno de León, hay que
+// decidir cómo enrutar (¿selector en /contacto?, ¿un solo número para todo?).
+export const WHATSAPP_NUMBER = "528121911303"; // Monterrey
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const SITE_NAME = "GDF Seguros";
 

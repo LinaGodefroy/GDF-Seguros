@@ -8,6 +8,11 @@ import { WHATSAPP_URL } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
 
+function formatLista(items: string[]): string {
+  if (items.length <= 1) return items.join("");
+  return `${items.slice(0, -1).join(", ")} y ${items[items.length - 1]}`;
+}
+
 export function generateStaticParams() {
   return RAMO_SLUGS.map((ramo) => ({ ramo }));
 }
@@ -51,7 +56,10 @@ export default async function RamoPage({
             <p className="mt-6 max-w-[48ch] text-base text-platinum-dim sm:text-lg">
               {content.subheadline}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <p className="mt-4 text-xs font-medium uppercase tracking-wide text-platinum-dim">
+              Trabajamos con {formatLista(content.aseguradoras)}
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={cotizarHref}
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"

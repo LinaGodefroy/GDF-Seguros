@@ -1,13 +1,15 @@
-// Contenido de las páginas de ramo. Las categorías de "coberturas típicas" son
-// genéricas del mercado mexicano, no afirmaciones específicas de GDF, porque
-// todavía no tenemos confirmado con Alex qué aseguradoras maneja ni los montos
-// reales por ramo (ver docs/pendientes.md en la raíz del proyecto).
+// Contenido de las páginas de ramo. Las categorías de "coberturas típicas"
+// siguen siendo genéricas del mercado mexicano (no inventamos montos ni
+// condiciones exactas que no tenemos), pero las aseguradoras por ramo y los
+// planes de vida ya están confirmados por Alex (2026-11-08, ver
+// docs/pendientes.md).
 
 export type RamoContent = {
   slug: string;
   nombre: string;
   headline: string;
   subheadline: string;
+  aseguradoras: string[];
   problemaTitulo: string;
   problemaBody: string;
   coberturas: { titulo: string; detalle: string }[];
@@ -24,6 +26,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
     headline: "Un choque no debería arruinarte el mes.",
     subheadline:
       "Comparamos coberturas de auto entre varias aseguradoras y te decimos qué paga el seguro y qué pagas tú, antes de que lo necesites.",
+    aseguradoras: ["GNP", "AXA", "Quálitas", "Chubb"],
     problemaTitulo: "El problema de siempre",
     problemaBody:
       "Cotizas un seguro de auto, te enseñan el precio más barato, y firmas. Lo que no cubre lo descubres hasta que chocas, y ya es tarde para elegir otra cosa.",
@@ -68,6 +71,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
     headline: "Un hospital puede costar más que un coche.",
     subheadline:
       "Comparamos planes de gastos médicos mayores entre varias aseguradoras para que una hospitalización no se lleve tus ahorros.",
+    aseguradoras: ["AXA", "GNP"],
     problemaTitulo: "El problema de siempre",
     problemaBody:
       "Perdiste el GMM de tu trabajo, o nunca lo tuviste. Y entre consultas, estudios y un imprevisto, la salud no espera a que termines de ahorrar lo suficiente.",
@@ -79,7 +83,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       { titulo: "Suma asegurada", detalle: "El monto máximo de cobertura, varía según el plan." },
     ],
     porQueComparar:
-      "Los planes de GMM varían mucho en deducible, coaseguro y suma asegurada. Dos pólizas con el mismo precio pueden cubrir montos muy distintos. Comparamos varias aseguradoras con el mismo criterio para que elijas con esa información, no a ciegas.",
+      "Los planes de GMM varían mucho en deducible, coaseguro y suma asegurada. Dos pólizas con el mismo precio pueden cubrir montos muy distintos. Comparamos AXA y GNP con el mismo criterio para que elijas con esa información, no a ciegas.",
     faq: [
       {
         pregunta: "¿Cuánto cuesta cotizar?",
@@ -111,25 +115,26 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
     headline: "Si algo te pasara, ¿qué le pasa a tu familia?",
     subheadline:
       "Un seguro de vida no es para ti. Es para que a los tuyos no les falte nada si tú faltas.",
+    aseguradoras: ["AXA", "GNP"],
     problemaTitulo: "El problema de siempre",
     problemaBody:
       "Un bebé en camino, una hipoteca a tu nombre, alguien que depende de tu ingreso. Nadie quiere pensar en esto, y por eso mismo mucha gente lo deja para después hasta que ya no se puede resolver después.",
     coberturas: [
-      { titulo: "Indemnización", detalle: "El monto que reciben tus beneficiarios." },
-      { titulo: "Invalidez", detalle: "Cobertura adicional en algunos planes." },
-      { titulo: "Ahorro o inversión", detalle: "Componente opcional en planes mixtos." },
+      { titulo: "Seguro de vida", detalle: "Protección pura para tus beneficiarios si faltas." },
+      { titulo: "PPR (Plan Personal de Retiro)", detalle: "Para construir tu retiro, con beneficios fiscales." },
+      { titulo: "Vida y ahorro", detalle: "Protección combinada con un componente de ahorro." },
     ],
     porQueComparar:
-      "El seguro de vida correcto depende de tu edad, tus dependientes y tu presupuesto. No hay un plan único. Comparamos opciones para encontrar el que de verdad corresponde a tu situación, no el que le conviene vender a quien te atiende.",
+      "El plan correcto depende de tu edad, tus dependientes y si lo que buscas es proteger, ahorrar, o las dos cosas. Comparamos entre AXA y GNP para encontrar el que de verdad corresponde a tu situación, no el que le conviene vender a quien te atiende.",
     faq: [
       {
         pregunta: "¿Cuánto cuesta cotizar?",
         respuesta: "Nada. Nos paga la aseguradora, no tú.",
       },
       {
-        pregunta: "¿A qué edad conviene contratar?",
+        pregunta: "¿Cuál es la diferencia entre seguro de vida, PPR y vida con ahorro?",
         respuesta:
-          "Entre antes, mejor precio y menos preguntas médicas. Pero nunca es demasiado tarde para cotizar y ver opciones.",
+          "El seguro de vida es protección pura para tus beneficiarios. El PPR es para tu propio retiro, con beneficios fiscales. Vida y ahorro combina protección con un fondo que vas construyendo. Te ayudamos a ver cuál corresponde a lo que buscas.",
       },
       {
         pregunta: "Si algo me pasa, ¿qué tan rápido reciben el dinero mis beneficiarios?",
@@ -142,7 +147,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       href: "/seguros/casa",
     },
     metaDescription:
-      "Comparamos seguros de vida entre varias aseguradoras según tu situación real. Cotiza gratis, sin compromiso.",
+      "Seguro de vida, PPR (retiro) o vida con ahorro, con AXA y GNP. Cotiza gratis, sin compromiso.",
   },
 
   casa: {
@@ -151,6 +156,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
     headline: "El banco te exige el seguro. Nosotros te ayudamos a que valga la pena.",
     subheadline:
       "Si compraste con hipoteca, el seguro de casa no es opcional. Al menos que lo que firmes te sirva de verdad si algo pasa.",
+    aseguradoras: ["AXA", "GNP"],
     problemaTitulo: "El problema de siempre",
     problemaBody:
       "Lo contratas porque el banco lo pide, firmas lo primero que te ofrecen, y sigues con tu vida. El problema es que nadie revisa esa póliza otra vez, hasta que hay un incendio, una inundación o un robo, y ahí sí importa qué firmaste.",
@@ -161,7 +167,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       { titulo: "Responsabilidad civil familiar", detalle: "Si alguien se lastima dentro de tu propiedad." },
     ],
     porQueComparar:
-      "El banco exige un seguro, no exige el que te ofrece su propio broker. Puedes comparar y elegir uno que de verdad te convenga. Mismo requisito para el banco, mejor cobertura para ti.",
+      "El banco exige un seguro, no exige el que te ofrece su propio broker. Comparamos entre AXA y GNP para que elijas uno que de verdad te convenga. Mismo requisito para el banco, mejor cobertura para ti.",
     faq: [
       {
         pregunta: "¿Tengo que contratar con el banco?",
@@ -183,19 +189,21 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       href: "/seguros/auto",
     },
     metaDescription:
-      "Comparamos seguros de casa entre varias aseguradoras, útil si el banco te lo exige con tu hipoteca. Cotiza gratis.",
+      "Comparamos seguros de casa entre AXA y GNP, útil si el banco te lo exige con tu hipoteca. Cotiza gratis.",
   },
 
-  // PENDIENTE (ver docs/pendientes.md): no confirmamos si vender seguros de
-  // mascotas cae dentro de la cédula A1/A2 de Alex o si requiere una cédula D
-  // aparte (agrícola y de animales). No marcar este ramo como disponible en
-  // producción hasta confirmarlo.
+  // PENDIENTE (ver docs/pendientes.md): la aseguradora (GNP) ya está
+  // confirmada, pero NO confirmamos si vender seguros de mascotas cae dentro
+  // de la cédula A1/A2 de Alex o si requiere una cédula D aparte (agrícola y
+  // de animales). No marcar este ramo como disponible en producción hasta
+  // confirmar eso.
   mascotas: {
     slug: "mascotas",
     nombre: "Mascotas",
     headline: "Una urgencia con tu mascota no debería ser también una urgencia de dinero.",
     subheadline:
       "Comparamos seguros de mascotas entre varias aseguradoras para que una cirugía o una urgencia no te tome por sorpresa.",
+    aseguradoras: ["GNP"],
     problemaTitulo: "El problema de siempre",
     problemaBody:
       "Adoptas o compras a tu mascota pensando en lo bueno. Nadie piensa en la urgencia veterinaria de las once de la noche hasta que ya está pasando, y ahí el costo se vuelve una decisión apurada, no algo que ya resolviste antes.",
@@ -206,7 +214,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       { titulo: "Responsabilidad civil", detalle: "Si tu mascota lastima a alguien o daña algo que no es tuyo." },
     ],
     porQueComparar:
-      "Los planes de mascotas varían mucho según especie, raza y edad, y no todos cubren enfermedad además de accidente. Comparamos para que sepas exactamente qué aplica a tu mascota antes de necesitarlo, no en la sala de urgencias.",
+      "Los planes de mascotas varían según especie, raza y edad, y no todos cubren enfermedad además de accidente. Te explicamos exactamente qué aplica a tu mascota antes de necesitarlo, no en la sala de urgencias.",
     faq: [
       {
         pregunta: "¿Cuánto cuesta cotizar?",
@@ -215,7 +223,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       {
         pregunta: "¿Cubre a cualquier raza o edad?",
         respuesta:
-          "Depende del plan y la aseguradora. Algunas tienen límites de edad o excluyen ciertas razas. Te lo decimos claro desde la cotización, no después.",
+          "Depende del plan. Algunas tienen límites de edad o excluyen ciertas razas. Te lo decimos claro desde la cotización, no después.",
       },
       {
         pregunta: "Si mi mascota tiene una urgencia, ¿a quién le hablo?",
@@ -228,7 +236,7 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
       href: "/seguros/vida",
     },
     metaDescription:
-      "Comparamos seguros de mascotas entre varias aseguradoras. Cotiza gratis y entiende qué cubre cada plan para tu perro o gato.",
+      "Comparamos seguros de mascotas con GNP. Cotiza gratis y entiende qué cubre el plan para tu perro o gato.",
   },
 };
 
