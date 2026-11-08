@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   MagnifyingGlass,
@@ -13,6 +12,9 @@ import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
 import { CotizadorForm } from "@/components/CotizadorForm";
 import { GLSLHills } from "@/components/ui/glsl-hills";
+import { HeroParallax } from "@/components/HeroParallax";
+
+const ASEGURADORAS = ["GNP", "AXA", "Quálitas", "Chubb"];
 
 const PASOS = [
   {
@@ -27,8 +29,8 @@ const PASOS = [
   },
   {
     numero: "03",
-    titulo: "Te decimos si podemos bajarte el costo",
-    detalle: "Gratis, sin letra pequeña escondida en el proceso.",
+    titulo: "Encontramos la mejor alternativa para ti",
+    detalle: "No el plan genérico, el que de verdad se acomoda a lo que necesitas.",
   },
   {
     numero: "04",
@@ -85,85 +87,99 @@ const FAQ_ITEMS = [
 export default function Home() {
   return (
     <>
-      {/* Hero: split asimétrico, texto a la izquierda, isotipo real como asset visual a la derecha */}
-      <section className="relative overflow-hidden">
-        <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-16 sm:px-6 md:grid-cols-2 md:pt-20 lg:px-8">
-          <div className="relative z-10 max-w-xl">
-            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-platinum sm:text-5xl lg:text-6xl">
+      <HeroParallax>
+        {/* Hero: ocupa toda la pantalla, se fija (pin) mientras la siguiente sección sube y lo cubre */}
+        <section
+          data-parallax-pin
+          className="relative flex min-h-[100dvh] items-center overflow-hidden"
+        >
+          <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
+          <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-platinum sm:text-5xl lg:text-6xl">
               Tu seguro, a tu medida.
             </h1>
             <p className="mt-6 max-w-[42ch] text-base text-platinum-dim sm:text-lg">
               Comparamos entre varias aseguradoras, te decimos cómo cobramos, y
               cuando algo pasa estamos aquí para ti.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href="#cotizar"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
               >
                 Cotiza gratis
-                <ArrowRight size={16} weight="bold" />
               </Link>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
               >
                 Escríbenos por WhatsApp
               </a>
             </div>
           </div>
+        </section>
 
-          <div className="relative flex items-center justify-center md:justify-end">
-            <Image
-              src="/brand/isotipo-negativo.png"
-              alt="Isotipo GDF Seguros"
-              width={420}
-              height={380}
-              priority
-              className="h-auto w-56 sm:w-72 md:w-80 lg:w-96"
-            />
+        {/* Los 4 ramos: sube y cubre al hero cuando se suelta el pin */}
+        <section className="relative z-10 rounded-t-[2.5rem] bg-onyx px-4 pb-20 pt-16 sm:rounded-t-[3rem] sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <Reveal>
+              <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Qué cubrimos</h2>
+            </Reveal>
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {RAMOS.map((ramo, i) => {
+                const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
+                return (
+                  <Reveal key={ramo.slug} delay={i * 0.05}>
+                    <Link
+                      href={`/seguros/${ramo.slug}`}
+                      className="group flex h-full flex-col justify-between rounded-2xl border border-platinum/10 bg-onyx-raised p-6 transition-colors hover:border-gold/40"
+                    >
+                      <div>
+                        <Icon size={28} weight="bold" className="text-gold-l1" />
+                        <h3 className="mt-4 text-lg font-semibold text-platinum">
+                          {ramo.nombre}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
+                          {ramo.resumen}
+                        </p>
+                      </div>
+                      <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gold-l1">
+                        Ver cobertura
+                        <ArrowRight
+                          size={14}
+                          weight="bold"
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </span>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </HeroParallax>
 
-      {/* Los 4 ramos */}
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <Reveal>
-          <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Qué cubrimos</h2>
-        </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {RAMOS.map((ramo, i) => {
-            const Icon = RAMO_ICONS[ramo.slug as keyof typeof RAMO_ICONS];
-            return (
-              <Reveal key={ramo.slug} delay={i * 0.05}>
-                <Link
-                  href={`/seguros/${ramo.slug}`}
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-platinum/10 bg-onyx-raised p-6 transition-colors hover:border-gold/40"
+      {/* Aseguradoras que comparamos */}
+      <section className="border-y border-platinum/10 bg-onyx-raised">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <Reveal>
+            <p className="text-center text-xs font-medium uppercase tracking-wide text-platinum-dim">
+              Comparamos entre estas aseguradoras
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+              {ASEGURADORAS.map((nombre) => (
+                <span
+                  key={nombre}
+                  className="font-display text-xl font-bold tracking-tight text-platinum/70 sm:text-2xl"
                 >
-                  <div>
-                    <Icon size={28} weight="bold" className="text-gold-l1" />
-                    <h3 className="mt-4 text-lg font-semibold text-platinum">
-                      {ramo.nombre}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-platinum-dim">
-                      {ramo.resumen}
-                    </p>
-                  </div>
-                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gold-l1">
-                    Ver cobertura
-                    <ArrowRight
-                      size={14}
-                      weight="bold"
-                      className="transition-transform group-hover:translate-x-1"
-                    />
-                  </span>
-                </Link>
-              </Reveal>
-            );
-          })}
+                  {nombre}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

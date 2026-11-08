@@ -185,6 +185,51 @@ export const RAMOS_CONTENT: Record<string, RamoContent> = {
     metaDescription:
       "Comparamos seguros de casa entre varias aseguradoras, útil si el banco te lo exige con tu hipoteca. Cotiza gratis.",
   },
+
+  // PENDIENTE (ver docs/pendientes.md): no confirmamos si vender seguros de
+  // mascotas cae dentro de la cédula A1/A2 de Alex o si requiere una cédula D
+  // aparte (agrícola y de animales). No marcar este ramo como disponible en
+  // producción hasta confirmarlo.
+  mascotas: {
+    slug: "mascotas",
+    nombre: "Mascotas",
+    headline: "Una urgencia con tu mascota no debería ser también una urgencia de dinero.",
+    subheadline:
+      "Comparamos seguros de mascotas entre varias aseguradoras para que una cirugía o una urgencia no te tome por sorpresa.",
+    problemaTitulo: "El problema de siempre",
+    problemaBody:
+      "Adoptas o compras a tu mascota pensando en lo bueno. Nadie piensa en la urgencia veterinaria de las once de la noche hasta que ya está pasando, y ahí el costo se vuelve una decisión apurada, no algo que ya resolviste antes.",
+    coberturas: [
+      { titulo: "Gastos veterinarios por accidente", detalle: "El rubro base de la mayoría de los planes." },
+      { titulo: "Gastos veterinarios por enfermedad", detalle: "No todos los planes lo incluyen, hay que revisarlo." },
+      { titulo: "Cirugías", detalle: "Suele tener un sublímite distinto al de consultas." },
+      { titulo: "Responsabilidad civil", detalle: "Si tu mascota lastima a alguien o daña algo que no es tuyo." },
+    ],
+    porQueComparar:
+      "Los planes de mascotas varían mucho según especie, raza y edad, y no todos cubren enfermedad además de accidente. Comparamos para que sepas exactamente qué aplica a tu mascota antes de necesitarlo, no en la sala de urgencias.",
+    faq: [
+      {
+        pregunta: "¿Cuánto cuesta cotizar?",
+        respuesta: "Nada. Nos paga la aseguradora, no tú.",
+      },
+      {
+        pregunta: "¿Cubre a cualquier raza o edad?",
+        respuesta:
+          "Depende del plan y la aseguradora. Algunas tienen límites de edad o excluyen ciertas razas. Te lo decimos claro desde la cotización, no después.",
+      },
+      {
+        pregunta: "Si mi mascota tiene una urgencia, ¿a quién le hablo?",
+        respuesta: "A nosotros. Te acompañamos en el proceso con la aseguradora, no te dejamos solo resolviendo papeleo en un momento difícil.",
+      },
+    ],
+    crossLink: {
+      texto: "¿Ya pensaste en proteger también a quienes dependen de ti?",
+      linkTexto: "Revisa seguro de vida",
+      href: "/seguros/vida",
+    },
+    metaDescription:
+      "Comparamos seguros de mascotas entre varias aseguradoras. Cotiza gratis y entiende qué cubre cada plan para tu perro o gato.",
+  },
 };
 
 export const RAMO_SLUGS = Object.keys(RAMOS_CONTENT);

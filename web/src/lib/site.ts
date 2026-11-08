@@ -38,4 +38,10 @@ export const RAMOS: Ramo[] = [
     resumen: "El banco te lo exige. Te ayudamos a elegir bien, no solo a cumplir el trámite.",
     queryParam: "casa",
   },
+  {
+    slug: "mascotas",
+    nombre: "Mascotas",
+    resumen: "Para que una urgencia con tu perro o gato no sea también una urgencia de dinero.",
+    queryParam: "mascotas",
+  },
 ];

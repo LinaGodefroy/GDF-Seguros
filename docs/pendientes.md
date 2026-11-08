@@ -15,12 +15,15 @@
 
 ## Datos de producto por ramo (necesarios antes de publicar `/seguros/*`)
 
-Las 4 páginas de ramo (`copy/seguros/*.md`) usan categorías de cobertura genéricas del mercado mexicano para no inventar datos de GDF. Antes de publicar, confirmar con Alex por ramo:
+Las páginas de ramo (`web/src/lib/ramos-data.ts`) usan categorías de cobertura genéricas del mercado mexicano para no inventar datos de GDF. Antes de publicar, confirmar con Alex por ramo:
 
-- [ ] **Auto**: ¿con qué aseguradoras trabaja GDF? ¿arma paquetes o coberturas distintas al estándar?
-- [ ] **GMM**: rangos reales de suma asegurada, deducible y coaseguro que maneja GDF; aseguradoras.
-- [ ] **Vida**: qué tipos de plan maneja (temporal, vida entera, con ahorro); aseguradoras.
-- [ ] **Casa**: ¿la cobertura incluye contenidos/bienes dentro de la casa, o solo estructura?; aseguradoras.
+**Actualizado 2026-11-08**: ya tenemos las 4 aseguradoras con las que compara GDF, confirmadas y mostradas en el home (`ASEGURADORAS` en `web/src/app/page.tsx`): GNP, AXA, Quálitas y Chubb. Esto resuelve la pregunta de "con qué aseguradoras trabaja" en general, pero no si las 4 ofrecen los 5 ramos por igual (ej. Quálitas es fuerte en auto, quizás no maneja los 5) — eso sigue abierto.
+
+- [ ] **Auto**: ¿arma GDF paquetes o coberturas distintas al estándar con GNP/AXA/Quálitas/Chubb?
+- [ ] **GMM**: rangos reales de suma asegurada, deducible y coaseguro que maneja GDF; ¿las 4 aseguradoras manejan GMM o solo algunas?
+- [ ] **Vida**: qué tipos de plan maneja (temporal, vida entera, con ahorro); ¿las 4 aseguradoras manejan vida o solo algunas?
+- [ ] **Casa**: ¿la cobertura incluye contenidos/bienes dentro de la casa, o solo estructura?
+- [ ] **Mascotas (agregado 2026-11-08, BLOQUEANTE legal, no solo de producto)**: busqué si vender seguros de mascotas requiere una cédula distinta a la A1/A2 que ya tiene Alex. Encontré referencia a una "Cédula D" (agrícola y de animales) como la que cubriría este ramo en México, pero la fuente no era la CNSF directamente, así que no es concluyente. **Hay que confirmar con Alex si tiene autorización para vender esto antes de marcarlo como disponible** — a diferencia de los otros 4 ramos, aquí no se verificó que esté dentro de su cédula actual. La página ya está construida (`/seguros/mascotas`) pero no debería promocionarse como ramo activo hasta resolver esto.
 
 ## Contacto y Nosotros
 
