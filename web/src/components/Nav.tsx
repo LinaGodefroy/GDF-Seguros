@@ -56,6 +56,13 @@ export function Nav() {
           </div>
 
           <Link
+            href="/nosotros"
+            className="text-sm font-medium text-platinum/90 transition-colors hover:text-gold-l1"
+          >
+            Nosotros
+          </Link>
+
+          <Link
             href="/blog"
             className="text-sm font-medium text-platinum/90 transition-colors hover:text-gold-l1"
           >
@@ -98,13 +105,22 @@ export function Nav() {
               </Link>
             ))}
           </div>
-          <Link
-            href="/blog"
-            className="mt-3 block rounded-lg border-t border-platinum/10 px-3 pt-4 text-sm text-platinum/90 hover:bg-onyx-raised"
-            onClick={() => setOpen(false)}
-          >
-            Blog
-          </Link>
+          <div className="mt-3 flex flex-col gap-1 border-t border-platinum/10 pt-3">
+            <Link
+              href="/nosotros"
+              className="rounded-lg px-3 py-2.5 text-sm text-platinum/90 hover:bg-onyx-raised"
+              onClick={() => setOpen(false)}
+            >
+              Nosotros
+            </Link>
+            <Link
+              href="/blog"
+              className="rounded-lg px-3 py-2.5 text-sm text-platinum/90 hover:bg-onyx-raised"
+              onClick={() => setOpen(false)}
+            >
+              Blog
+            </Link>
+          </div>
         </div>
       )}
     </header>

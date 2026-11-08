@@ -2,14 +2,12 @@ import Link from "next/link";
 import {
   MagnifyingGlass,
   CurrencyCircleDollar,
-  Clock,
   Handshake,
   ArrowRight,
 } from "@phosphor-icons/react/dist/ssr";
 import { RAMOS, WHATSAPP_URL } from "@/lib/site";
 import { RAMO_ICONS } from "@/lib/ramo-icons";
 import { Reveal } from "@/components/Reveal";
-import { Faq } from "@/components/Faq";
 import { CotizadorForm } from "@/components/CotizadorForm";
 import { GLSLHills } from "@/components/ui/glsl-hills";
 import { HeroParallax } from "@/components/HeroParallax";
@@ -19,8 +17,8 @@ const ASEGURADORAS = ["GNP", "AXA", "Quálitas", "Chubb"];
 const PASOS = [
   {
     numero: "01",
-    titulo: "Cuéntanos qué quieres proteger",
-    detalle: "2 minutos, sin compromiso.",
+    titulo: "Nos cuentas tus preocupaciones",
+    detalle: "Te escuchamos sin compromiso.",
   },
   {
     numero: "02",
@@ -29,13 +27,13 @@ const PASOS = [
   },
   {
     numero: "03",
-    titulo: "Encontramos la mejor alternativa para ti",
-    detalle: "No el plan genérico, el que de verdad se acomoda a lo que necesitas.",
+    titulo: "Te decimos qué opción es la adecuada para ti",
+    detalle: "Y te explicamos por qué.",
   },
   {
     numero: "04",
     titulo: "Tú decides",
-    detalle: "Sin presión. Lo que no cubre, te lo decimos antes de firmar.",
+    detalle: "Sin presión y con la tranquilidad de estar protegido.",
   },
 ];
 
@@ -51,36 +49,9 @@ const DIFERENCIADORES = [
     detalle: "Nos paga la aseguradora vía comisión, a ti no te cuesta más.",
   },
   {
-    icon: Clock,
-    titulo: "Publicamos cuánto tardamos",
-    detalle: "En responder cuando reportas un siniestro.",
-  },
-  {
     icon: Handshake,
-    titulo: "Acompañamos con nombre y apellido",
-    detalle: "Alex da la cara, no un número de ticket.",
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    pregunta: "¿De verdad no me cuesta nada pasar por un agente?",
-    respuesta:
-      "No. Nos paga la aseguradora con una comisión, no tú. Si alguna vez fuera distinto, te lo decimos antes de empezar, no después.",
-  },
-  {
-    pregunta: "¿Por qué no voy directo con la aseguradora?",
-    respuesta:
-      "Puedes. Pero ahí solo te venden su propio producto, y si algo sale mal, no hay nadie peleando tu caso. Nosotros comparamos varias opciones y te acompañamos cuando de verdad importa.",
-  },
-  {
-    pregunta: "Ya me fue mal con un agente antes. ¿Por qué sería distinto con ustedes?",
-    respuesta:
-      "Porque publicamos cómo cobramos y cuánto tardamos en responder, y porque cuando hay un siniestro, Alex da la cara, no te deja con un número de ticket.",
-  },
-  {
-    pregunta: "¿Cuánto tarda la cotización?",
-    respuesta: "2 minutos para mandarnos tus datos. Te respondemos por WhatsApp apenas la recibimos.",
+    titulo: "Nosotros damos la cara",
+    detalle: "Te acompañamos en un siniestro, no te dejamos con un número de ticket.",
   },
 ];
 
@@ -99,8 +70,8 @@ export default function Home() {
               Tu seguro, a tu medida.
             </h1>
             <p className="mt-6 max-w-[42ch] text-base text-platinum-dim sm:text-lg">
-              Comparamos entre varias aseguradoras, te decimos cómo cobramos, y
-              cuando algo pasa estamos aquí para ti.
+              Buscamos entre varias aseguradoras la mejor opción para que
+              cuando algo pase tú estés tranquilo.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
@@ -125,7 +96,7 @@ export default function Home() {
         <section className="relative z-10 rounded-t-[2.5rem] bg-onyx px-4 pb-20 pt-16 sm:rounded-t-[3rem] sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <Reveal>
-              <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Qué cubrimos</h2>
+              <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Cómo podemos protegerte</h2>
             </Reveal>
             <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {RAMOS.map((ramo, i) => {
@@ -229,18 +200,6 @@ export default function Home() {
               </div>
             </Reveal>
           ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-t border-platinum/10 bg-onyx-raised">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-          <Reveal>
-            <h2 className="text-2xl font-bold text-platinum sm:text-3xl">Preguntas frecuentes</h2>
-          </Reveal>
-          <div className="mt-8">
-            <Faq items={FAQ_ITEMS} />
-          </div>
         </div>
       </section>
 

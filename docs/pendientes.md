@@ -2,6 +2,12 @@
 
 > Cosas que no bloquean el avance (seguimos construyendo con supuestos razonables marcados como `[PENDIENTE]` en el contenido), pero que hay que cerrar antes de publicar. Revisar todo este documento al final, antes de publicar en Vercel.
 
+## Logos de aseguradoras (agregado 2026-11-08)
+
+La franja "Comparamos entre estas aseguradoras" (home y `/nosotros`) hoy muestra GNP, AXA, Quálitas y Chubb en texto, no en logo. Revisé Simple Icons (la fuente que usamos para el logo de GDF) y no tiene ninguna de las 4 — es una librería de marcas tech, no de seguros. Tomarlos de Wikipedia o directo de sus sitios no es limpio: los logos en Wikipedia están bajo "fair use" específico para la enciclopedia, no reutilizable en un sitio comercial.
+
+- [ ] Pedirle a Alex el kit de logos para agentes/brokers de GNP, AXA, Quálitas y Chubb (casi siempre existe un portal "ya soy agente" con esto, a veces con lineamientos de uso). En cuanto lleguen los archivos los integro igual que el logo de GDF.
+
 ## ICP / mensaje
 
 - [ ] Orden real de objeciones: ¿desconfianza/no-entender las coberturas pesa más que el precio, o es al revés? (`context/icp.json`)
@@ -11,7 +17,7 @@
 
 ## Copy / operación
 
-- [ ] Tiempo real de respuesta a un siniestro reportado (ej. "24 horas hábiles") — es uno de los 4 diferenciadores centrales del copy ("publicamos cuánto tardamos en responder"). Sin este dato no se puede publicar esa promesa con un número real.
+- [x] ~~Tiempo real de respuesta a un siniestro reportado~~ — **resuelto 2026-11-08 quitando la promesa**, no confirmando el dato. Se quitó "Publicamos cuánto tardamos en responder" de los diferenciadores (home y `/nosotros`) y de la respuesta del FAQ, porque nunca se confirmó el número real. También se quitó la mención directa a "Alex da la cara" en esos mismos lugares, reemplazada por "Nosotros damos la cara" — refuerza la idea de agencia, no persona.
 
 ## Datos de producto por ramo (necesarios antes de publicar `/seguros/*`)
 
@@ -29,7 +35,7 @@ Las páginas de ramo (`web/src/lib/ramos-data.ts`) usan categorías de cobertura
 
 **Actualizado 2026-11-08**: se decidió NO construir `/contacto` ni `/nosotros` por ahora. Razón de `/contacto`: no hay oficina, horario ni redes confirmadas, así que una página aparte solo repetiría el WhatsApp y el cotizador que ya están en todas las páginas (burbuja flotante + sección `#cotizar`). El footer y nav ya no enlazan a esas rutas — "Contacto" en el footer ahora apunta a WhatsApp y a `#cotizar` directo. `copy/contacto.md` quedó desactualizado (tenía tarjetas de oficina); no usarlo como referencia si se retoma la página más adelante.
 
-`/nosotros` se queda pendiente de verdad (no descartado) — vale la pena cuando haya contenido real: por qué existe GDF, algo de Alex, por qué confiar en una agencia nueva sin testimonios todavía. Sin ese material escribir la página ahora sería relleno genérico.
+**Actualizado 2026-11-08 (otra vez)**: `/nosotros` ya se construyó, a petición directa, y ahí se movió el FAQ que antes vivía en el home. Solo usa información ya verificada en el resto del sitio (agencia vs. persona, cómo trabajamos, aseguradoras, cédula) — no se inventó biografía de Alex, año de fundación, ni fotos de equipo, porque no tenemos ese material. Sigue pendiente enriquecerla con contenido real cuando Alex lo mande.
 
 - [ ] Número de WhatsApp de la agencia (bloquea publicar — `web/src/lib/site.ts`, `WHATSAPP_NUMBER_PENDING`, es un placeholder falso ahora mismo)
 - [ ] Material real para `/nosotros` cuando se decida retomarla: historia, por qué Alex, fotos si llegan a existir

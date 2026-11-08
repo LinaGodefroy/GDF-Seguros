@@ -17,7 +17,7 @@ export const RAMOS: Ramo[] = [
   {
     slug: "auto",
     nombre: "Auto",
-    resumen: "Para cuando chocas y no quieres pagar la reparación de tu bolsa.",
+    resumen: "Desde lo básico que exige la ley hasta la cobertura donde no pagas ni un peso.",
     queryParam: "auto",
   },
   {
@@ -35,7 +35,7 @@ export const RAMOS: Ramo[] = [
   {
     slug: "casa",
     nombre: "Casa",
-    resumen: "El banco te lo exige. Te ayudamos a elegir bien, no solo a cumplir el trámite.",
+    resumen: "Es una de las inversiones más importantes de tu vida, y asegurarla puede ser tan simple como elegir bien, no solo cumplir con el banco.",
     queryParam: "casa",
   },
   {
