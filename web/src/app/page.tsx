@@ -109,8 +109,13 @@ export default function Home() {
         >
           <GLSLHills className="absolute inset-0" cameraZ={125} planeSize={256} speed={0.4} />
           <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
-            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-platinum sm:text-5xl lg:text-6xl">
-              Tu seguro, a tu medida.
+            <h1 className="font-display leading-[1.05] tracking-tight">
+              <span className="block text-4xl font-extralight italic text-platinum-dim sm:text-5xl lg:text-6xl">
+                Porque Nadie Es Igual,
+              </span>
+              <span className="mt-1 block font-sans text-4xl font-extrabold text-platinum sm:text-5xl lg:text-6xl">
+                Tu Seguro, A Tu Medida
+              </span>
             </h1>
             <p className="mt-6 max-w-[42ch] text-base text-platinum-dim sm:text-lg">
               Buscamos entre varias aseguradoras la mejor opción para que

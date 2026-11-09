@@ -9,7 +9,7 @@ import { GridVignetteBackground } from "@/components/ui/vignette-grid-background
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 // Tipografía de acento, solo para titulares de hero/impacto. El resto del
@@ -18,7 +18,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 const bricolage = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["200", "300", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
