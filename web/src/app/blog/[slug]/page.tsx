@@ -6,6 +6,7 @@ import { BLOG_POSTS, BLOG_SLUGS, type BlogBlock } from "@/lib/blog-data";
 import { formatFechaEs } from "@/lib/format-date";
 import { Reveal } from "@/components/Reveal";
 import { Newsletter } from "@/components/Newsletter";
+import { DecoratedCard } from "@/components/ui/decorated-card";
 
 export function generateStaticParams() {
   return BLOG_SLUGS.map((slug) => ({ slug }));
@@ -91,20 +92,22 @@ export default async function BlogPostPage({
           ))}
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-12 rounded-2xl border border-gold/30 bg-onyx-raised p-6 text-center sm:p-8">
-          <h3 className="text-lg font-semibold text-platinum">
-            ¿Quieres cotizar o resolver esto con alguien?
-          </h3>
-          <p className="mt-2 text-sm text-platinum-dim">
-            Comparamos entre aseguradoras y te explicamos tus opciones, gratis.
-          </p>
-          <Link
-            href={cotizarHref}
-            className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
-          >
-            Cotiza gratis
-            <ArrowRight size={16} weight="bold" />
-          </Link>
+        <Reveal delay={0.1} className="mt-12">
+          <DecoratedCard>
+            <h3 className="text-lg font-semibold text-platinum">
+              ¿Quieres cotizar o resolver esto con alguien?
+            </h3>
+            <p className="mt-2 text-sm text-platinum-dim">
+              Comparamos entre aseguradoras y te explicamos tus opciones, gratis.
+            </p>
+            <Link
+              href={cotizarHref}
+              className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
+            >
+              Cotiza gratis
+              <ArrowRight size={16} weight="bold" />
+            </Link>
+          </DecoratedCard>
         </Reveal>
 
         {relacionados.length > 0 && (
