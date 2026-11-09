@@ -21,15 +21,20 @@ La franja "Comparamos entre estas aseguradoras" (home y `/nosotros`) hoy muestra
 
 ## Datos de producto por ramo (necesarios antes de publicar `/seguros/*`)
 
-Las páginas de ramo (`web/src/lib/ramos-data.ts`) usan categorías de cobertura genéricas del mercado mexicano para no inventar datos de GDF. Antes de publicar, confirmar con Alex por ramo:
+**Actualizado 2026-11-08**: Alex confirmó qué aseguradoras maneja por ramo (ya reflejado en `web/src/lib/ramos-data.ts`, campo `aseguradoras`, y visible en cada página de ramo como "Trabajamos con..."):
 
-**Actualizado 2026-11-08**: ya tenemos las 4 aseguradoras con las que compara GDF, confirmadas y mostradas en el home (`ASEGURADORAS` en `web/src/app/page.tsx`): GNP, AXA, Quálitas y Chubb. Esto resuelve la pregunta de "con qué aseguradoras trabaja" en general, pero no si las 4 ofrecen los 5 ramos por igual (ej. Quálitas es fuerte en auto, quizás no maneja los 5) — eso sigue abierto.
+- Auto: GNP, AXA, Quálitas y Chubb (las 4)
+- GMM: solo AXA y GNP
+- Vida: solo AXA y GNP, con 3 tipos de plan ya confirmados y agregados al contenido — Seguro de Vida, PPR (retiro), Vida y Ahorro
+- Casa: AXA y GNP
+- Mascotas: solo GNP
 
-- [ ] **Auto**: ¿arma GDF paquetes o coberturas distintas al estándar con GNP/AXA/Quálitas/Chubb?
-- [ ] **GMM**: rangos reales de suma asegurada, deducible y coaseguro que maneja GDF; ¿las 4 aseguradoras manejan GMM o solo algunas?
-- [ ] **Vida**: qué tipos de plan maneja (temporal, vida entera, con ahorro); ¿las 4 aseguradoras manejan vida o solo algunas?
+Sigue sin confirmar (detalle fino de producto, ya no "con quién trabaja"):
+
+- [ ] **Auto**: ¿arma GDF paquetes o coberturas distintas al estándar con esas 4 aseguradoras?
+- [ ] **GMM**: rangos reales de suma asegurada, deducible y coaseguro que maneja GDF con AXA/GNP.
 - [ ] **Casa**: ¿la cobertura incluye contenidos/bienes dentro de la casa, o solo estructura?
-- [ ] **Mascotas (agregado 2026-11-08, BLOQUEANTE legal, no solo de producto)**: busqué si vender seguros de mascotas requiere una cédula distinta a la A1/A2 que ya tiene Alex. Encontré referencia a una "Cédula D" (agrícola y de animales) como la que cubriría este ramo en México, pero la fuente no era la CNSF directamente, así que no es concluyente. **Hay que confirmar con Alex si tiene autorización para vender esto antes de marcarlo como disponible** — a diferencia de los otros 4 ramos, aquí no se verificó que esté dentro de su cédula actual. La página ya está construida (`/seguros/mascotas`) pero no debería promocionarse como ramo activo hasta resolver esto.
+- [ ] **Mascotas (BLOQUEANTE legal, sigue abierto)**: ya sabemos que la aseguradora es GNP, pero no si vender seguros de mascotas requiere una cédula distinta a la A1/A2 que ya tiene Alex. Encontré referencia a una "Cédula D" (agrícola y de animales) como la que cubriría este ramo en México, pero la fuente no era la CNSF directamente, así que no es concluyente. **Hay que confirmar con Alex si tiene autorización para vender esto antes de marcarlo como disponible** — la página ya está construida (`/seguros/mascotas`) pero no debería promocionarse como ramo activo hasta resolver esto.
 
 ## Contacto y Nosotros
 
@@ -37,7 +42,8 @@ Las páginas de ramo (`web/src/lib/ramos-data.ts`) usan categorías de cobertura
 
 **Actualizado 2026-11-08 (otra vez)**: `/nosotros` ya se construyó, a petición directa, y ahí se movió el FAQ que antes vivía en el home. Solo usa información ya verificada en el resto del sitio (agencia vs. persona, cómo trabajamos, aseguradoras, cédula) — no se inventó biografía de Alex, año de fundación, ni fotos de equipo, porque no tenemos ese material. Sigue pendiente enriquecerla con contenido real cuando Alex lo mande.
 
-- [ ] Número de WhatsApp de la agencia (bloquea publicar — `web/src/lib/site.ts`, `WHATSAPP_NUMBER_PENDING`, es un placeholder falso ahora mismo)
+- [x] ~~Número de WhatsApp de la agencia~~ — **resuelto parcialmente 2026-11-08**: 8121911303, confirmado como el número de **Monterrey**. Ya conectado en `web/src/lib/site.ts` (`WHATSAPP_NUMBER`) y funcionando en todo el sitio (burbuja flotante, botones de hero, cotizador, footer) como el único WhatsApp del sitio.
+- [ ] **Nuevo, 2026-11-08**: ¿León tiene su propio número de WhatsApp, o el de Monterrey atiende las dos plazas por ahora? Si hay uno de León, falta decidir cómo se enruta (¿un selector de ciudad en algún lado?, ¿se deja un solo número para todo el sitio y listo?).
 - [ ] Material real para `/nosotros` cuando se decida retomarla: historia, por qué Alex, fotos si llegan a existir
 - [ ] Preferencia de herramienta para agendar citas: ¿Google Calendar, Calendly, u otra? **Ya es urgente**: el cotizador embebido en el home (`web/src/components/CotizadorForm.tsx`) ya manda a un link placeholder de Calendly (`SCHEDULING_URL_PENDING`). Si terminan usando Google Calendar en vez de Calendly, ese componente hay que reescribirlo (el prellenado de nombre/ramo/WhatsApp por URL funciona distinto en cada uno).
 

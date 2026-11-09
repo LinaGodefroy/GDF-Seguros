@@ -16,6 +16,7 @@
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "react-use-measure": "^2.1.7",
     "three": "^0.187.0"
   },
   "devDependencies": {
