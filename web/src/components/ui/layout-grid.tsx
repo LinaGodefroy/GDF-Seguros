@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, type ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, X } from "@phosphor-icons/react/dist/ssr";
@@ -107,11 +108,12 @@ export function LayoutGrid({ cards }: { cards: LayoutGridCard[] }) {
 
 function CardImage({ card }: { card: LayoutGridCard }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <Image
       src={card.thumbnail}
       alt={card.title}
-      className="absolute inset-0 h-full w-full object-cover"
+      fill
+      sizes="(min-width: 1024px) 40vw, 100vw"
+      className="object-cover"
     />
   );
 }
