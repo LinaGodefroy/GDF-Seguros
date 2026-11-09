@@ -10,6 +10,7 @@ import { MagnifyingGlass, CurrencyCircleDollar, Handshake, ArrowRight } from "@p
 import { WHATSAPP_URL } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
+import { DecoratedCard } from "@/components/ui/decorated-card";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -54,8 +55,9 @@ const FAQ_ITEMS = [
       "Porque te decimos cómo cobramos desde el principio, y porque cuando hay un siniestro, nosotros damos la cara, no te dejamos con un número de ticket.",
   },
   {
-    pregunta: "¿Cuánto tarda la cotización?",
-    respuesta: "2 minutos para mandarnos tus datos. Te respondemos por WhatsApp apenas la recibimos.",
+    pregunta: "¿Me ayudan solo en la cotización, o también cuando la póliza se renueva?",
+    respuesta:
+      "También en la renovación. Revisamos que las condiciones sigan siendo las correctas para ti, no dejamos que se renueve sola al mismo precio sin que nadie la revise.",
   },
 ];
 
@@ -70,8 +72,7 @@ export default function NosotrosPage() {
           <p className="mt-6 text-base leading-relaxed text-platinum-dim sm:text-lg">
             GDF Seguros compara entre varias aseguradoras para encontrarte la
             opción que se acomoda a ti, no la que le conviene vender a
-            alguien más. Alex es parte del equipo, no la única cara detrás
-            de GDF.
+            alguien más. Somos un equipo, no una sola persona detrás de GDF.
           </p>
         </Reveal>
       </section>
@@ -126,27 +127,29 @@ export default function NosotrosPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-gold/30 bg-onyx-raised p-6 text-center sm:p-10">
-          <h2 className="mx-auto max-w-xl text-2xl font-bold leading-snug text-platinum sm:text-3xl">
-            Cotiza gratis. Si podemos bajarte el costo, te lo decimos.
-          </h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/#cotizar"
-              className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
-            >
-              Cotiza gratis
-              <ArrowRight size={16} weight="bold" className="ml-2" />
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
-            >
-              Escríbenos por WhatsApp
-            </a>
-          </div>
+        <Reveal>
+          <DecoratedCard>
+            <h2 className="mx-auto max-w-xl text-2xl font-bold leading-snug text-platinum sm:text-3xl">
+              Cotiza gratis. Si podemos bajarte el costo, te lo decimos.
+            </h2>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/#cotizar"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
+              >
+                Cotiza gratis
+                <ArrowRight size={16} weight="bold" className="ml-2" />
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-72 items-center justify-center whitespace-nowrap rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
+              >
+                Escríbenos por WhatsApp
+              </a>
+            </div>
+          </DecoratedCard>
         </Reveal>
       </section>
     </>

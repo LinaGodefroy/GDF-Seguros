@@ -3,10 +3,49 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { RAMOS_CONTENT, RAMO_SLUGS } from "@/lib/ramos-data";
-import { RAMO_ICONS } from "@/lib/ramo-icons";
 import { WHATSAPP_URL } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 import { Faq } from "@/components/Faq";
+import { RamoHeroImage } from "@/components/ui/ramo-hero-image";
+import { DecoratedCard } from "@/components/ui/decorated-card";
+
+const RAMO_HERO_IMAGES: Record<string, string[]> = {
+  auto: [
+    "/ramos/auto/carousel/stephan-louis-KynjrTZ3JO4-unsplash.jpg",
+    "/ramos/auto/carousel/laurent-yasiel-ls717GhAuEY-unsplash.jpg",
+    "/ramos/auto/carousel/nick-mollenbeck-wR30lR9ZdJQ-unsplash.jpg",
+    "/ramos/auto/carousel/seungmin-yoon-Y1aznu6hxbE-unsplash.jpg",
+    "/ramos/auto/carousel/youssef-d-DkGUn0Y1VzA-unsplash.jpg",
+  ],
+  "gastos-medicos-mayores": [
+    "/ramos/gastos-medicos-mayores/carousel/vitaly-gariev-2kopEHjST-g-unsplash.jpg",
+    "/ramos/gastos-medicos-mayores/carousel/vitaly-gariev-XqMo4OlBnh0-unsplash.jpg",
+    "/ramos/gastos-medicos-mayores/carousel/accuray-AaVTg7jXUew-unsplash.jpg",
+    "/ramos/gastos-medicos-mayores/carousel/accuray-S34fEzWT6eE-unsplash.jpg",
+    "/ramos/gastos-medicos-mayores/carousel/lucas-santos-KFpC-9XlUuo-unsplash.jpg",
+  ],
+  vida: [
+    "/ramos/vida/carousel/kelly-sikkema-WvVyudMd1Es-unsplash.jpg",
+    "/ramos/vida/carousel/josue-michel-OMl0o6TSQXU-unsplash.jpg",
+    "/ramos/vida/carousel/josue-michel-x8y0mJCVs6g-unsplash.jpg",
+    "/ramos/vida/carousel/klara-kulikova-tS_p3fpe8iQ-unsplash.jpg",
+    "/ramos/vida/carousel/land-o-lakes-inc-p6wuN_3Wwqs-unsplash.jpg",
+  ],
+  casa: [
+    "/ramos/casa/carousel/todd-kent-178j8tJrNlc-unsplash.jpg",
+    "/ramos/casa/carousel/ian-macdonald-W8z6aiwfi1E-unsplash.jpg",
+    "/ramos/casa/carousel/johnson-U6Q6zVDgmSs-unsplash.jpg",
+    "/ramos/casa/carousel/ronnie-george-z11gbBo13ro-unsplash.jpg",
+    "/ramos/casa/carousel/vlad-yuhimchuk-1S1mk3uDDDA-unsplash.jpg",
+  ],
+  mascotas: [
+    "/ramos/mascotas/carousel/andrew-s-ouo1hbizWwo-unsplash.jpg",
+    "/ramos/mascotas/carousel/alec-favale-Ivzo69e18nk-unsplash.jpg",
+    "/ramos/mascotas/carousel/mia-anderson-2k6v10Y2dIg-unsplash.jpg",
+    "/ramos/mascotas/carousel/thomas-de-fretes-OOUlnUvZniU-unsplash.jpg",
+    "/ramos/mascotas/carousel/tracy-anderson-ul-zgarqBLE-unsplash.jpg",
+  ],
+};
 
 function formatLista(items: string[]): string {
   if (items.length <= 1) return items.join("");
@@ -40,7 +79,7 @@ export default async function RamoPage({
   const content = RAMOS_CONTENT[ramo];
   if (!content) notFound();
 
-  const Icon = RAMO_ICONS[content.slug as keyof typeof RAMO_ICONS];
+  const heroImages = RAMO_HERO_IMAGES[content.slug];
   const cotizarHref = `/?ramo=${content.slug}#cotizar`;
 
   return (
@@ -78,9 +117,9 @@ export default async function RamoPage({
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center md:justify-end">
-            <div className="flex h-56 w-56 items-center justify-center rounded-full border border-gold-l3/20 bg-onyx-raised sm:h-72 sm:w-72">
-              <Icon size={96} weight="bold" className="text-gold-l1" />
+          <div className="relative">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gold-l3/20">
+              <RamoHeroImage images={heroImages} alt={content.nombre} />
             </div>
           </div>
         </div>
@@ -126,7 +165,7 @@ export default async function RamoPage({
 
       {/* Por qué comparar */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold text-platinum sm:text-3xl">
             Por qué comparar en vez de contratar directo
           </h2>
@@ -150,33 +189,35 @@ export default async function RamoPage({
 
       {/* Cross-link + CTA final */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <Reveal className="rounded-3xl border border-gold/30 bg-onyx-raised p-6 text-center sm:p-10">
-          <p className="text-sm text-platinum-dim">
-            {content.crossLink.texto}{" "}
-            <Link href={content.crossLink.href} className="font-medium text-gold-l1 hover:text-gold">
-              {content.crossLink.linkTexto}
-            </Link>
-          </p>
-          <h2 className="mx-auto mt-4 max-w-xl text-2xl font-bold leading-snug text-platinum sm:text-3xl">
-            Cotiza gratis. Si podemos bajarte el costo, te lo decimos.
-          </h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href={cotizarHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
-            >
-              Cotiza gratis
-              <ArrowRight size={16} weight="bold" />
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
-            >
-              Escríbenos por WhatsApp
-            </a>
-          </div>
+        <Reveal>
+          <DecoratedCard>
+            <p className="text-sm text-platinum-dim">
+              {content.crossLink.texto}{" "}
+              <Link href={content.crossLink.href} className="font-medium text-gold-l1 hover:text-gold">
+                {content.crossLink.linkTexto}
+              </Link>
+            </p>
+            <h2 className="mx-auto mt-4 max-w-xl text-2xl font-bold leading-snug text-platinum sm:text-3xl">
+              Cotiza gratis. Si podemos bajarte el costo, te lo decimos.
+            </h2>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href={cotizarHref}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold text-onyx transition-colors hover:bg-gold-d1"
+              >
+                Cotiza gratis
+                <ArrowRight size={16} weight="bold" />
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-platinum/20 px-6 py-3.5 text-sm font-semibold text-platinum transition-colors hover:border-gold-l1 hover:text-gold-l1"
+              >
+                Escríbenos por WhatsApp
+              </a>
+            </div>
+          </DecoratedCard>
         </Reveal>
       </section>
     </>

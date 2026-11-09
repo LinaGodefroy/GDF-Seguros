@@ -31,10 +31,10 @@ La franja "Comparamos entre estas aseguradoras" (home y `/nosotros`) hoy muestra
 
 Sigue sin confirmar (detalle fino de producto, ya no "con quién trabaja"):
 
-- [ ] **Auto**: ¿arma GDF paquetes o coberturas distintas al estándar con esas 4 aseguradoras?
+- [x] ~~**Auto**: ¿arma GDF paquetes o coberturas distintas al estándar con esas 4 aseguradoras?~~ — **resuelto 2026-11-09**: no, GDF no arma paquetes propios. Vende las coberturas estándar de cada aseguradora tal cual, solo comparando entre ellas.
 - [ ] **GMM**: rangos reales de suma asegurada, deducible y coaseguro que maneja GDF con AXA/GNP.
-- [ ] **Casa**: ¿la cobertura incluye contenidos/bienes dentro de la casa, o solo estructura?
-- [ ] **Mascotas (BLOQUEANTE legal, sigue abierto)**: ya sabemos que la aseguradora es GNP, pero no si vender seguros de mascotas requiere una cédula distinta a la A1/A2 que ya tiene Alex. Encontré referencia a una "Cédula D" (agrícola y de animales) como la que cubriría este ramo en México, pero la fuente no era la CNSF directamente, así que no es concluyente. **Hay que confirmar con Alex si tiene autorización para vender esto antes de marcarlo como disponible** — la página ya está construida (`/seguros/mascotas`) pero no debería promocionarse como ramo activo hasta resolver esto.
+- [x] ~~**Casa**: ¿la cobertura incluye contenidos/bienes dentro de la casa, o solo estructura?~~ — **resuelto 2026-11-09** vía información pública de AXA (Hogar Integral) y GNP (Hogar Versátil): ambas ofrecen las dos cosas — estructura ("continente") y contenido (muebles, electrónicos, bienes) — pero varía según el plan si van incluidos juntos o se contratan por separado. El copy de `/seguros/casa` ya refleja esto de forma genérica, sin atribuir el detalle a una aseguradora en particular.
+- [x] ~~**Mascotas (BLOQUEANTE legal)**: confirmar si vender seguros de mascotas requiere una cédula distinta a la A1/A2 de Alex~~ — **resuelto 2026-11-09**: Alex confirmó que sí puede vender este ramo. `/seguros/mascotas` queda como ramo activo; su contenido (coberturas, FAQ) ya se actualizó con información pública de "Mi Mascota GNP" (gastos médicos hasta $30,000 MXN, responsabilidad civil, fallecimiento con cremación, robo con violencia, mascotas de 3 meses a 9 años).
 
 ## Contacto y Nosotros
 
@@ -52,6 +52,13 @@ Sigue sin confirmar (detalle fino de producto, ya no "con quién trabaja"):
 - [ ] **Proveedor de email para el newsletter**: `web/src/components/Newsletter.tsx` valida el correo y muestra confirmación, pero no envía el dato a ningún lado todavía — no hay Mailchimp, Resend, Beehiiv ni similar conectado. Hay que elegir uno y conectarlo antes de publicar, si no los correos que la gente deje se pierden.
 - [ ] Los 4 artículos iniciales (`web/src/lib/blog-data.ts`) son guías educativas genéricas, no usan datos específicos de GDF. El dato legal del artículo de seguro de auto obligatorio sí está verificado por búsqueda web (2026-11-08): Ley de Caminos, Puentes y Autotransporte Federal (obligatorio en carreteras federales desde 2019) y obligatoriedad estatal en Nuevo León, CDMX, Edomex, Jalisco y otros, 19 estados en total a la fecha. Vale la pena revisar que siga vigente antes de publicar si pasa mucho tiempo.
 - [ ] No hay categoría "Novedades" poblada todavía (el tipo de dato la soporta) — no se inventaron anuncios falsos de la agencia. Cuando haya algo real que contar (nueva cobertura, cambio de proceso, etc.), ahí se agrega.
+
+## Aviso de Privacidad (agregado 2026-11-09)
+
+Se creó `/aviso-de-privacidad` (antes daba 404 aunque el footer ya la enlazaba) con una primera versión funcional: cubre los elementos mínimos que pide la LFPDPPP (responsable, datos que se recaban, finalidades, transferencias a aseguradoras, cookies, derechos ARCO, cambios al aviso), usando solo datos reales de GDF — nada inventado.
+
+- [ ] **No es la versión definitiva**: falta razón social exacta, RFC y domicilio fiscal del responsable (no los tenemos, por eso no aparecen en el texto) y una revisión por un abogado antes de confiar en ella como documento legal completo.
+- [ ] Si se conecta un proveedor de email para el newsletter o cualquier herramienta de analítica/tracking, hay que volver a este aviso y actualizarlo — hoy dice explícitamente que el sitio no usa cookies de rastreo ni analítica de terceros, y eso dejaría de ser cierto.
 
 ## Dominio
 
